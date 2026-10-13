@@ -1,0 +1,11 @@
+When a POST is deleted, all its links in POST_TAG must also be deleted: POST_TAG là bảng sinh ra khi ánh xạ, không có trong ERD. Việc xóa dây chuyền là khóa ngoại kèm tùy chọn CASCADE (slide 3A tr.29), không phải RBNN.
+
+When a STUDENT is deleted, all their notifications must also be deleted: Mỗi NOTIFICATION bắt buộc thuộc một USER (tham gia toàn phần, vẽ được trong ERD). Xóa kéo theo là CASCADE không phải RBNN
+
+A STUDENT may choose not to vote on a DISCUSSION_ITEM: "Có thể không vote" là tham gia một phần, vẽ được (slide 2A tr.43). VOTES là mối liên kết M:N nên mỗi cặp STUDENT–DISCUSSION_ITEM vốn chỉ có tối đa 1 lần vote. Phần đổi hoặc xóa vote là mô tả thao tác, không phải RBNN.
+
+A POST or COMMENTS can be edited at most 5 times by its creator…: "Tối đa 5 lần sửa" là POST tham gia RECORD với (0,5), vẽ được bằng ký hiệu min-max (slide 2A tr.63–64). 
+
+Each TAG must have a unique Tag Name: là ràng buộc khóa.
+
+A POST must contain at least one TAG before it can be published: "Ít nhất 1 tag" là tham gia toàn phần, vẽ được bằng nét đôi hoặc (1,N). POST cũng không có thuộc tính trạng thái nên vế "before published" không kiểm tra được.

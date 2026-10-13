@@ -1,0 +1,18 @@
+{
+	"mcpServers": {
+		"com.figma.mcp/mcp": {
+			"type": "http",
+			"url": "https://mcp.figma.com/mcp",
+			"tools": [
+				"*"
+			]
+		},
+		"io.draw/mcp": {
+			"type": "http",
+			"url": "https://mcp.draw.io/mcp",
+			"tools": [
+				"*"
+			]
+		}
+	}
+}

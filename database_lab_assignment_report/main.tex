@@ -1,0 +1,294 @@
+% !TeX program = pdflatex
+% !TeX root = main.tex
+\documentclass[12pt, a4paper, oneside]{article}
+\usepackage[utf8]{vietnam}
+\usepackage[utf8]{inputenc}
+\usepackage[left=40mm, right=25mm, top=40mm, bottom=25mm]{geometry}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{indentfirst,enumitem}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{scrextend}
+\usepackage{comment}
+\usepackage{soul}
+\usepackage{tipa}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{algorithm2e}
+\usepackage{float}
+\usepackage[most]{tcolorbox}
+\usepackage{pdfpages}
+\usepackage{import}
+\usepackage{circuitikz}
+\usepackage{siunitx}
+%\usepackage{tocbibind}
+\usepackage[T5]{fontenc} % Hỗ trợ tiếng Việt
+\usepackage{mathptmx} % Gói Times Roman
+\graphicspath{ {figures/} }
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{references.bib}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc}
+% Cấu hình Tiêu đề Chương (Section): Canh trái, in hoa, đậm, cỡ 14
+\titleformat{\section}[block]
+  {\raggedright\normalfont\fontsize{14pt}{16.8pt}\bfseries\MakeUppercase}
+  {\thesection}
+  {0.5em}
+  {}
+% Cấu hình Tiêu đề Mục (Subsection): Đậm, chữ thường
+\titleformat{\subsection}[hang]
+  {\normalfont\normalsize\bfseries}
+  {\thesubsection}
+  {0.5em}
+  {}
+
+\captionsetup[table]{position=top, labelfont=bf, textfont=it, font=small, skip=5pt}
+\captionsetup[figure]{position=bottom, labelfont=bf, textfont=it, font=small, skip=5pt}
+\captionsetup[lstlisting]{labelformat=empty, labelsep=none, textfont=it, font=small}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=black,
+    pdftitle={TKHTN},
+    pdfpagemode=FullScreen,
+}
+
+\changefontsizes{13pt}
+\renewcommand\thesection{\arabic{section}.}
+\renewcommand\thesubsection{\arabic{section}.\arabic{subsection}}
+\setlength{\parindent}{1.25cm}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{} % Xóa cấu hình mặc định
+\cfoot{\thepage} % Số trang ở giữa dưới
+
+\def\mathrlap{\mathpalette\mathrlapinternal} 
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+
+%CHÈN ẢNH
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usetikzlibrary[patterns]
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},   commentstyle=\color{codegreen},
+  keywordstyle=\color{blue},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+\lstset{style=mystyle}
+\input{verilogstyle}
+\input{styles}
+\setlength{\headheight}{14.94pt}
+
+\begin{document}
+\begin{titlepage}
+\begin{tikzpicture}[remember picture,overlay,inner sep=0,outer sep=0]
+     % xshift ở B và C từ 1.5cm thành 3cm để dịch khung sang phải né gáy sách 40mm
+     \draw[blue!70!black,line width=4pt] ([xshift=-1.5cm,yshift=-2cm]current page.north east) coordinate (A)--([xshift=3cm,yshift=-2cm]current page.north west) coordinate(B)--([xshift=3cm,yshift=2cm]current page.south west) coordinate (C)--([xshift=-1.5cm,yshift=2cm]current page.south east) coordinate(D)--cycle;
+
+     \draw ([yshift=0.5cm,xshift=-0.5cm]A)-- ([yshift=0.5cm,xshift=0.5cm]B)--
+     ([yshift=-0.5cm,xshift=0.5cm]B) --([yshift=-0.5cm,xshift=-0.5cm]B)--([yshift=0.5cm,xshift=-0.5cm]C)--([yshift=0.5cm,xshift=0.5cm]C)--([yshift=-0.5cm,xshift=0.5cm]C)-- ([yshift=-0.5cm,xshift=-0.5cm]D)--([yshift=0.5cm,xshift=-0.5cm]D)--([yshift=0.5cm,xshift=0.5cm]D)--([yshift=-0.5cm,xshift=0.5cm]A)--([yshift=-0.5cm,xshift=-0.5cm]A)--([yshift=0.5cm,xshift=-0.5cm]A);
+
+     \draw ([yshift=-0.3cm,xshift=0.3cm]A)-- ([yshift=-0.3cm,xshift=-0.3cm]B)--
+     ([yshift=0.3cm,xshift=-0.3cm]B) --([yshift=0.3cm,xshift=0.3cm]B)--([yshift=-0.3cm,xshift=0.3cm]C)--([yshift=-0.3cm,xshift=-0.3cm]C)--([yshift=0.3cm,xshift=-0.3cm]C)-- ([yshift=0.3cm,xshift=0.3cm]D)--([yshift=-0.3cm,xshift=0.3cm]D)--([yshift=-0.3cm,xshift=-0.3cm]D)--([yshift=0.3cm,xshift=-0.3cm]A)--([yshift=0.3cm,xshift=0.3cm]A)--([yshift=-0.3cm,xshift=0.3cm]A);
+\end{tikzpicture}
+\begin{center}
+    \vspace{7pt}
+        \textbf{VIETNAM NATIONAL UNIVERSITY HO CHI MINH CITY}
+    
+    \vspace{7pt}
+    {HO CHI MINH UNIVERSITY OF TECHNOLOGY}
+    
+    \vspace{7pt}
+    {FACULTY OF COMPUTER SCIENCE AND ENGINEERING}
+
+\end{center}
+\vspace{10pt}
+\begin{center}
+    \includegraphics[scale=0.3]{HCMUT.png}
+    
+    \vspace{10pt}
+\end{center}
+
+\begin{center}
+    \fontsize{18pt}{17pt}\selectfont 
+    \textbf{ASSIGNMENT REPORT (L10)}
+\end{center}
+\begin{center}
+    \fontsize{15pt}{17pt}\selectfont 
+    \textbf{\textrm{TOPIC: QA SYSTEM STUDENTFORUM }}
+\end{center}
+
+\begin{center}
+    \vspace{15pt}
+ \textbf{TEAM: 4}
+\end{center}
+
+\vspace{10pt}
+
+%Nơi điền họ tên sinh viên & GVHD
+\begin{table}[h]
+\centering
+\begin{tabular}{rl}
+Supervisor: & Duong Huynh Anh Duc\\
+\end{tabular}
+\end{table}
+
+
+
+
+%Mẫu này dành cho nhóm sinh viên, xoá dấu % để sử dụng
+%\begin{table}[h!]
+%\centering
+%\begin{tabular}{|c|c|c|}
+%\hline
+%\textbf{MSSV} & \textbf{Họ và tên} & \textbf{Tỉ lệ phân công} \\ \hline
+%23xxxxx & Nguyễn Văn A & 100\% \\ \hline
+%23xxxxx & Trần Văn B & 100\% \\ \hline
+%23xxxxx & Phạm Thị C & 100\% \\ \hline
+%\end{tabular}
+%\end{table}
+
+
+
+\vfill
+\centerline{\bf Ho Chi Minh, October 2026}
+
+\vspace{1cm}
+\end{titlepage}
+
+%Bảng phân công nhiệm vụ của thành viên (Dùng cho nhóm sinh viên), nếu có form riêng của giảng viên thì xuất pdf sau đó chèn trang mẫu của giảng viên vào
+\newpage
+\section*{TASK ASSIGNMENT AND MEMBER EVALUATION TABLE}
+\addcontentsline{toc}{section}{TASK ASSIGNMENT AND MEMBER EVALUATION TABLE}
+
+The table below presents the detailed task assignments and the evaluation of task completion levels for the members of Group 4.
+
+\vspace{0.5cm}
+
+\begin{table}[H] % Chữ H viết hoa để ép bảng đứng im tại đây
+    \centering
+    \renewcommand{\arraystretch}{1.8}
+    \renewcommand{\tabularxcolumn}[1]{m{#1}} % Ép cột X tự động căn giữa chiều dọc
+    \begin{tabularx}{\textwidth}{|c|l|X|c|>{\centering\arraybackslash}m{2.5cm}|}
+        \hline
+        \textbf{StudentID} & \textbf{Name} & \multicolumn{1}{c|}{\textbf{Work}} & \textbf{Percentage} \\
+        \hline
+        % --- Thành viên 1 ---
+        2411545 & Trần Nguyễn Khánh & 
+        - System description \newline
+        - Sketching erd \newline
+        - Compose all related resourse. & 100\% \\
+        \hline
+        % --- Thành viên 2 ---
+        2410148 & Trần Hồng Anh & 
+        - review system description \newline
+        - mapping relations & 100\% \\
+        \hline
+        % --- Thành viên 3 ---
+        2411997 & Đặng Thị Hoàng Mai & 
+        - investigate Reddit platform \newline
+        - fixing errors in the system description \newline
+        - fituning the semantic constraints
+        & 100\% \\
+        \hline
+        % --- Thành viên 4 ---
+        2412166 & Lê Mai Nam &
+        - StackOverFlow investigation \newline
+        - sketching erd
+        & 100\% \\
+        \hline
+        % --- Thành viên 5 ---
+        2411258 & Phạm Gia Huy &
+        - complete semantic constraints list \newline 
+        - mapping final relations 
+        & 100\% \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\vspace{1cm}
+\begin{flushright}
+    \textit{Ho Chi Minh City, October 2026}
+\end{flushright}
+
+\newpage
+\thispagestyle{empty}
+\setstretch{1.3}
+\renewcommand{\contentsname}{\centering {TABLE OF CONTENT}}
+\tableofcontents
+
+% Optional: tự tạo danh mục hình ảnh và danh mục bảng
+% \newpage
+% \renewcommand{\listfigurename}{\centering DANH SÁCH HÌNH MINH HỌA}
+% \listoffigures % Tự động tạo danh mục hình ảnh
+% \newpage
+% \renewcommand{\listtablename}{\centering DANH SÁCH BẢNG SỐ LIỆU}
+% \listoftables % Tự động tạo danh mục bảng
+
+% =============================================================================
+% NỘI DUNG CHÍNH CỦA BÁO CÁO
+% =============================================================================
+\newpage
+% =============================================================================
+% CHƯƠNG 1: GIỚI THIỆU CHUNG
+% =============================================================================
+\input{assignment1/main_ass1.tex}
+% Nội dung chương 1 tại đây
+\newpage
+% =============================================================================
+% TÀI LIỆU THAM KHẢO
+% =============================================================================
+\nocite{*}
+\phantomsection
+\printbibliography[title={\centering TÀI LIỆU THAM KHẢO}, heading=bibintoc]
+% Chỉnh các tài liệu tham khảo ở file references.bib
+\newpage
+% =============================================================================
+% PHỤ LỤC
+% =============================================================================
+\phantomsection
+\section*{PHỤ LỤC}
+
+\addcontentsline{toc}{section}{PHỤ LỤC}
+
+% Điền nôi dung phụ lục ở đây
+
+\end{document}

@@ -1,0 +1,13 @@
+there are discussions, discussion primarily comprises of a title. a discussions have lots of posts, and a 'master post' that details the question. A upvote or downvote (similar to like/dislike) could be casted to a post by any user to show that user opinion about the post.
+
+there are user and moderator. user creates/deletes discussions/posts, user can edit other people's posts. post edits are recorded as revisions. moderator can edit/delete any posts, and take other administration actions.
+
+A user has a profile page. A profile page has a list of discussions created, a list of posts created, general information, and other platform-specific stats
+
+Users can subscribe to a discussion/post to receive notifications about changes made to the discussion/post. 
+
+QUESTIONS: 
+1) Different in reddit, there are more labels
+2) Do not have the "dien dan" 
+3) Stackoverflow's discussion do not have various forms like Reddit
+4) 
